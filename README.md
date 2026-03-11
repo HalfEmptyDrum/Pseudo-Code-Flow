@@ -30,31 +30,46 @@ Copy `.claude/skills/translate/` into your project's `.claude/skills/` folder. R
 // use python
 // output: todo.py
 
-a simple command-line todo app
+todos = empty list of { title, done }
 
-store todos in a list, each todo has a title and done status
+loop forever:
+  show "> " prompt, read input
+  split input into command and argument
 
-commands:
-  add <title> - add a new todo
-  list - show all todos with numbers
-  done <number> - mark a todo as done
-  remove <number> - remove a todo
-  quit - exit
+  if command is "add":
+    append { title: argument, done: false } to todos
 
-loop: show prompt "> ", read command, execute it
-print a message if the command is unknown
+  if command is "list":
+    for each todo with index i:
+      print i, checkbox (x if done, empty if not), title
+
+  if command is "done":
+    convert argument to number
+    set todos[number].done = true
+
+  if command is "remove":
+    convert argument to number
+    delete todos[number]
+
+  if command is "quit":
+    break
+
+  otherwise:
+    print "unknown command"
 ```
 
 **You run `/translate example.pseudo`** — Claude generates a working `todo.py`.
 
-**Claude suggests back (as pseudo-code, not Python):**
+**Claude suggests back (as pseudo-code, matching your style):**
 ```
-suggested changes to example.pseudo:
-  + handle edge cases:
-  +   add with no title - print "usage: add <title>"
-  +   done/remove with non-number - print "please give a number"
-  +
-  + save/load todos to a file so they persist between runs
+  if command is "done":
+    convert argument to number
++   if number is out of range: print "no such todo"
+    set todos[number].done = true
+
+  if command is "add":
++   if argument is empty: print "usage: add <title>"
+    append { title: argument, done: false } to todos
 ```
 
 You decide what to keep. You update the `.pseudo` file. You re-translate.
