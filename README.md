@@ -72,4 +72,4 @@ You decide what to keep. You update the `.pseudo` file. You re-translate.
 - Claude never modifies `.pseudo` files without your approval
 - All design feedback from Claude comes as pseudo-code, matching your style
 - Claude asks before re-translating after pseudo-code changes
-- Claude speaks up about ambiguity, edge cases, and structural issues — but only when it matters
+- Claude speaks up about ambiguity, edge cases, and structural issues — only when it matters
