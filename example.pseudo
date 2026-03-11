@@ -1,0 +1,16 @@
+// use python
+// output: todo.py
+
+a simple command-line todo app
+
+store todos in a list, each todo has a title and done status
+
+commands:
+  add <title> - add a new todo
+  list - show all todos with numbers
+  done <number> - mark a todo as done
+  remove <number> - remove a todo
+  quit - exit
+
+loop: show prompt "> ", read command, execute it
+print a message if the command is unknown
